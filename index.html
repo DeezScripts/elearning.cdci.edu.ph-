@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Colegio de Calumpit Inc. - Swim</title>
+<!-- 🔥 FAVICON: Colegio de Calumpit School Seal (inline SVG) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L58 8 L67 5 L73 13 L83 14 L86 24 L95 29 L92 39 L98 48 L92 57 L95 67 L86 72 L83 82 L73 83 L67 91 L58 88 L50 94 L42 88 L33 91 L27 83 L17 82 L14 72 L5 67 L8 57 L2 48 L8 39 L5 29 L14 24 L17 14 L27 13 L33 5 L42 8 Z' fill='%238c1c20'/%3E%3Ccircle cx='50' cy='50' r='38' fill='%23ffffff' stroke='%238c1c20' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='33' fill='none' stroke='%238c1c20' stroke-width='1'/%3E%3Cpath d='M50 22 L54 38 L68 32 L60 45 L75 50 L60 55 L68 68 L54 62 L50 78 L46 62 L32 68 L40 55 L25 50 L40 45 L32 32 L46 38 Z' fill='%23f1c40f'/%3E%3Cpath d='M32 60 Q50 52 68 60 L68 68 Q50 60 32 68 Z' fill='%23ffffff' stroke='%23333333' stroke-width='1.5'/%3E%3Cline x1='50' y1='56' x2='50' y2='64' stroke='%23333333' stroke-width='1'/%3E%3Crect x='48' y='42' width='4' height='12' fill='%23333333' rx='1'/%3E%3Cpath d='M50 30 L45 42 L55 42 Z' fill='%23f1c40f'/%3E%3Ccircle cx='50' cy='32' r='3' fill='%23e74c3c'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L58 8 L67 5 L73 13 L83 14 L86 24 L95 29 L92 39 L98 48 L92 57 L95 67 L86 72 L83 82 L73 83 L67 91 L58 88 L50 94 L42 88 L33 91 L27 83 L17 82 L14 72 L5 67 L8 57 L2 48 L8 39 L5 29 L14 24 L17 14 L27 13 L33 5 L42 8 Z' fill='%238c1c20'/%3E%3Ccircle cx='50' cy='50' r='38' fill='%23ffffff' stroke='%238c1c20' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='33' fill='none' stroke='%238c1c20' stroke-width='1'/%3E%3Cpath d='M50 22 L54 38 L68 32 L60 45 L75 50 L60 55 L68 68 L54 62 L50 78 L46 62 L32 68 L40 55 L25 50 L40 45 L32 32 L46 38 Z' fill='%23f1c40f'/%3E%3Cpath d='M32 60 Q50 52 68 60 L68 68 Q50 60 32 68 Z' fill='%23ffffff' stroke='%23333333' stroke-width='1.5'/%3E%3Cline x1='50' y1='56' x2='50' y2='64' stroke='%23333333' stroke-width='1'/%3E%3Crect x='48' y='42' width='4' height='12' fill='%23333333' rx='1'/%3E%3Cpath d='M50 30 L45 42 L55 42 Z' fill='%23f1c40f'/%3E%3Ccircle cx='50' cy='32' r='3' fill='%23e74c3c'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#8c1c20">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Eater&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{overscroll-behavior:none;overscroll-behavior-y:contain;-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:#f4f6f9;color:#333;overflow-x:hidden;transition:background 1.5s,color 1.5s;min-height:100vh;min-height:100dvh}
+input,textarea{-webkit-user-select:text;user-select:text}
+:root{--sidebar-bg:#2c3e50;--main-bg:#f4f6f9;--card-bg:#fff;--primary-red:#b11e22;--school-maroon:#8c1c20;--text-main:#333;--text-muted:#6a737b;--border-color:#d7d7d7;--shadow:0 2px 4px rgba(0,0,0,0.05);--aqua-blue:#0083b0}
+.school-seal-svg{width:44px;height:44px;flex-shrink:0}
+@media(min-width:768px){.school-seal-svg{width:50px;height:50px}}
+#login-page{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh;background:#fff}
+#login-page .top-header{background:#fff;padding:10px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #eee}
+@media(min-width:768px){#login-page .top-header{padding:10px 40px;gap:15px}}
+#login-page .school-name{color:var(--school-maroon);font-family:Georgia,serif;font-weight:bold;font-size:1.05rem;line-height:1.1}
+@media(min-width:768px){#login-page .school-name{font-size:1.5rem}}
+#login-page .school-address{color:var(--school-maroon);font-size:.65rem;margin-top:3px}
+@media(min-width:768px){#login-page .school-address{font-size:.75rem}}
+.hero-section{position:relative;background:#d9d9d9;min-height:auto;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 20px;overflow:hidden;gap:25px}
+@media(min-width:900px){.hero-section{min-height:450px;flex-direction:row;justify-content:space-between;padding:0 60px;gap:40px}}
+.hero-section::before{content:'';position:absolute;top:0;left:0;width:180px;height:100%;background:var(--school-maroon);clip-path:polygon(0 0,100% 0,0 80%);z-index:1}
+@media(min-width:768px){.hero-section::before{width:350px}}
+.hero-section::after{content:'';position:absolute;bottom:0;left:0;width:130px;height:100px;background:#e67e22;clip-path:polygon(0 20%,100% 100%,0 100%);z-index:2}
+@media(min-width:768px){.hero-section::after{width:250px;height:200px}}
+.triangle-shape{position:absolute;bottom:0;left:70px;width:200px;height:160px;background:#c2b59b;clip-path:polygon(50% 0%,0% 100%,100% 100%);opacity:.6;z-index:1}
+@media(min-width:768px){.triangle-shape{left:150px;width:400px;height:300px}}
+.hero-text{position:relative;z-index:3;color:#fff;max-width:100%;text-align:center;margin-top:0}
+@media(min-width:900px){.hero-text{max-width:500px;text-align:left;margin-top:40px}}
+.hero-text h1{font-size:1.5rem;font-weight:600;text-shadow:2px 2px 4px rgba(0,0,0,.4);margin-bottom:6px}
+@media(min-width:768px){.hero-text h1{font-size:2.5rem;margin-bottom:10px}}
+.hero-text h2{font-size:1.05rem;font-weight:400;text-shadow:2px 2px 4px rgba(0,0,0,.4)}
+@media(min-width:768px){.hero-text h2{font-size:1.8rem}}
+.login-box{position:relative;z-index:10;background:#fff;width:100%;max-width:420px;padding:20px;box-shadow:0 4px 15px rgba(0,0,0,.1);border-radius:2px}
+@media(min-width:768px){.login-box{padding:30px}}
+.login-box h3{color:#555;font-size:1.05rem;font-weight:400;margin-bottom:15px}
+@media(min-width:768px){.login-box h3{font-size:1.2rem;margin-bottom:20px}}
+.form-group{margin-bottom:15px}
+.form-group label{display:block;color:#555;font-size:.85rem;margin-bottom:6px}
+.input-wrapper{position:relative;display:flex;align-items:center}
+.input-wrapper i{position:absolute;left:12px;color:#999;font-size:.9rem}
+.input-wrapper input{width:100%;padding:11px 10px 11px 35px;border:1px solid #ccc;border-radius:2px;font-size:.95rem;outline:none;font-family:inherit}
+.input-wrapper input:focus{border-color:var(--school-maroon)}
+.btn-login{background:var(--school-maroon);color:#fff;border:none;padding:11px 25px;font-size:1rem;border-radius:2px;cursor:pointer;margin-top:10px;font-family:inherit}
+.btn-login:hover{background:#6e1519}
+.forgot-link{display:block;margin-top:15px;color:var(--school-maroon);font-size:.85rem;text-decoration:none}
+.course-categories{padding:30px 20px;background:#fff;flex:1}
+@media(min-width:768px){.course-categories{padding:40px 60px}}
+.category-header{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:30px}
+.category-header .line{flex:1;height:2px;background:var(--school-maroon);max-width:400px}
+.category-header h4{color:var(--school-maroon);font-size:1.1rem;font-weight:400;white-space:nowrap}
+@media(min-width:768px){.category-header h4{font-size:1.2rem}}
+.collapse-all{text-align:right;font-size:.8rem;color:#666;margin-bottom:15px;cursor:pointer}
+.category-list{font-size:.95rem;color:var(--school-maroon);padding-left:20px}
+.category-list .tree-item{display:flex;align-items:center;gap:8px}
+#dashboard-page{display:none;min-height:100vh;min-height:100dvh;background:var(--main-bg)}
+#dashboard-page.active{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
+@media(min-width:900px){#dashboard-page.active{flex-direction:row}}
+.sidebar{width:100%;height:55px;background:var(--sidebar-bg);display:flex;flex-direction:row;justify-content:space-around;align-items:center;padding:0 10px;gap:0;z-index:100;flex-shrink:0}
+@media(min-width:900px){.sidebar{width:60px;height:100vh;height:100dvh;flex-direction:column;justify-content:flex-start;padding-top:15px;gap:22px}}
+.sidebar a{color:#aeb9c2;font-size:1.15rem;text-decoration:none;display:flex;justify-content:center;align-items:center;width:40px;height:40px;border-radius:6px}
+@media(min-width:900px){.sidebar a{width:100%;height:40px;border-radius:0}}
+.sidebar a:hover,.sidebar a.active{color:#fff}
+.sidebar a.active{background:rgba(255,255,255,.1)}
+@media(min-width:900px){.sidebar a.active{border-left:3px solid #fff}}
+.main-content{flex:1;display:flex;flex-direction:column;overflow-y:auto;padding:0 15px 20px;-webkit-overflow-scrolling:touch}
+@media(min-width:768px){.main-content{padding:0 25px 25px}}
+.dashboard-header{background:var(--card-bg);padding:10px 0;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);margin-bottom:15px;position:sticky;top:0;z-index:50}
+.dashboard-header .logo-area{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.dashboard-header .school-name{color:var(--school-maroon);font-family:Georgia,serif;font-weight:bold;font-size:.95rem;line-height:1.1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media(min-width:768px){.dashboard-header .school-name{font-size:1.4rem;white-space:normal}}
+.dashboard-header .school-address{color:var(--school-maroon);font-size:.65rem;margin-top:2px}
+@media(min-width:768px){.dashboard-header .school-address{font-size:.75rem;margin-top:4px}}
+.header-actions{display:flex;align-items:center;gap:14px;color:var(--text-muted);font-size:1rem;flex-shrink:0}
+@media(min-width:768px){.header-actions{gap:18px;font-size:1.1rem}}
+.header-actions i{cursor:pointer}
+.avatar-top{width:32px;height:32px;background:#e0e0e0;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;cursor:pointer}
+@media(min-width:768px){.avatar-top{width:35px;height:35px;font-size:1.2rem}}
+.card{background:var(--card-bg);border-radius:4px;box-shadow:var(--shadow);margin-bottom:15px;border-top:4px solid var(--primary-red);padding:15px}
+@media(min-width:768px){.card{padding:20px;margin-bottom:20px}}
+.profile-section{display:flex;justify-content:space-between;align-items:center;padding:15px;flex-wrap:wrap;gap:12px}
+@media(min-width:768px){.profile-section{padding:25px 30px;flex-wrap:nowrap}}
+.profile-left{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+@media(min-width:768px){.profile-left{gap:20px}}
+.avatar-large{width:55px;height:55px;border-radius:50%;background:#e9ecef;display:flex;align-items:flex-end;justify-content:center;font-size:2.5rem;color:#fff;overflow:hidden;flex-shrink:0}
+@media(min-width:768px){.avatar-large{width:80px;height:80px;font-size:3.5rem}}
+.profile-name{font-size:1rem;color:#2c3e50;font-weight:400;display:flex;flex-direction:column;gap:6px;text-transform:uppercase;min-width:0;overflow:hidden}
+@media(min-width:768px){.profile-name{font-size:1.6rem;flex-direction:row;align-items:center;gap:15px;flex-wrap:wrap}}
+.profile-name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-message{font-size:.7rem;color:var(--text-muted);background:transparent;border:1px solid var(--border-color);padding:4px 10px;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-transform:none;width:fit-content;font-family:inherit}
+.btn-customize{background:#e9ecef;border:1px solid var(--border-color);padding:8px 14px;border-radius:4px;font-size:.75rem;cursor:pointer;color:#495057;white-space:nowrap;font-family:inherit}
+@media(min-width:768px){.btn-customize{font-size:.8rem;padding:8px 16px}}
+.section-title{font-size:1rem;color:#495057;font-weight:500}
+.swimming-intro{font-size:.85rem;color:var(--text-muted);margin-bottom:15px;line-height:1.5;background:#f8f9fa;padding:12px 15px;border-left:4px solid var(--aqua-blue);border-radius:4px}
+.swimming-clubs-grid{display:grid;grid-template-columns:1fr;gap:15px}
+@media(min-width:600px){.swimming-clubs-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}}
+.club-card{border:1px solid var(--border-color);border-radius:8px;overflow:hidden;background:#fff;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.club-card:hover{box-shadow:0 6px 12px rgba(0,0,0,.1);transform:translateY(-3px)}
+.club-img{height:100px;display:flex;align-items:center;justify-content:center;font-size:3rem;color:#fff;text-shadow:2px 2px 4px rgba(0,0,0,.3)}
+@media(min-width:768px){.club-img{height:120px;font-size:3.5rem}}
+.club-info{padding:15px;display:flex;flex-direction:column;flex-grow:1}
+.club-info h4{color:#2c3e50;font-size:1.05rem;margin-bottom:8px}
+.club-info p{font-size:.85rem;color:var(--text-muted);line-height:1.4;margin-bottom:15px;flex-grow:1}
+.club-meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee;padding-top:12px;font-size:.75rem;color:var(--text-muted);gap:10px;flex-wrap:wrap}
+.club-meta>span{display:flex;align-items:center;gap:5px}
+.club-buttons{display:flex;gap:6px}
+.btn-view{background:#fff;color:var(--aqua-blue);border:1px solid var(--aqua-blue);padding:7px 12px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:500;font-family:inherit;min-height:32px}
+.btn-view:hover{background:#e6f7ff}
+.btn-apply{background:var(--aqua-blue);color:#fff;border:none;padding:7px 14px;border-radius:4px;cursor:pointer;font-size:.75rem;font-weight:500;font-family:inherit;min-height:32px}
+.btn-apply:hover{background:#006a8e}
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:1000;justify-content:center;align-items:center;opacity:0;transition:opacity .3s;padding:15px}
+.modal-overlay.show{display:flex;opacity:1}
+.modal-content{background:#fff;width:100%;max-width:500px;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.2);overflow:hidden;transform:scale(.9);transition:transform .3s;display:flex;flex-direction:column;max-height:90vh;max-height:90dvh}
+.modal-overlay.show .modal-content{transform:scale(1)}
+.modal-header{background:var(--aqua-blue);color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.modal-header h3{font-size:1rem;font-weight:500}
+@media(min-width:768px){.modal-header h3{font-size:1.1rem}}
+.close-btn{font-size:1.7rem;cursor:pointer;color:rgba(255,255,255,.8);line-height:1;padding:0 5px}
+.close-btn:hover{color:#fff}
+.modal-body{padding:20px;overflow-y:auto;flex-grow:1;-webkit-overflow-scrolling:touch}
+.modal-body p{font-size:.9rem;color:#555;margin-bottom:15px}
+.member-list{list-style:none;padding:0}
+.member-list li{padding:10px 15px;border-bottom:1px solid #eee;font-size:.9rem;color:#333;display:flex;align-items:center;gap:10px}
+.member-list li:last-child{border-bottom:none}
+.member-list li i{color:var(--aqua-blue)}
+#application-view{display:none}
+.app-form-group{margin-bottom:15px}
+.app-form-group label{display:block;font-size:.85rem;color:#555;margin-bottom:5px;font-weight:500}
+.app-form-group input{width:100%;padding:11px 12px;border:1px solid #ccc;border-radius:4px;font-size:.95rem;outline:none;font-family:inherit}
+.app-form-group input:focus{border-color:var(--aqua-blue)}
+.modal-footer{padding:15px 20px;background:#f8f9fa;border-top:1px solid #eee;display:flex;justify-content:flex-end;gap:10px;flex-shrink:0}
+.btn-close-modal{background:#6c757d;color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer;font-size:.85rem;font-family:inherit}
+.btn-fillup{background:var(--aqua-blue);color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer;font-size:.85rem;font-family:inherit}
+.btn-submit-app{background:#28a745;color:#fff;border:none;padding:10px 16px;border-radius:4px;cursor:pointer;font-size:.85rem;font-family:inherit}
+.loading-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);z-index:2000;justify-content:center;align-items:center;flex-direction:column;color:#fff;padding:20px}
+.loading-overlay.show{display:flex}
+.loading-spinner{width:60px;height:60px;border:5px solid rgba(255,255,255,.2);border-top-color:var(--aqua-blue);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:25px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:1.1rem;font-weight:500;margin-bottom:10px;text-align:center}
+.loading-subtext{font-size:.85rem;color:rgba(255,255,255,.7);text-align:center;margin-bottom:20px}
+.loading-timer{font-size:2rem;font-weight:bold;color:var(--aqua-blue)}
+.loading-bar-container{width:80%;max-width:400px;height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin-top:20px;overflow:hidden}
+.loading-bar{height:100%;width:0;background:linear-gradient(90deg,#00b4db,#0083b0);transition:width 1s linear;border-radius:3px}
+.video-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:3000;justify-content:center;align-items:center;flex-direction:column}
+.video-overlay.show{display:flex}
+.video-container{width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:#000;position:relative}
+.video-container video{width:100%;height:100%;object-fit:contain;background:#000}
+.video-notice{position:absolute;top:15px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.75);color:#fff;padding:10px 20px;border-radius:30px;font-size:.75rem;display:flex;align-items:center;gap:8px;z-index:10;border:1px solid rgba(255,255,255,.2);white-space:nowrap;max-width:90vw}
+@media(min-width:768px){.video-notice{top:20px;padding:12px 25px;font-size:.85rem}}
+.video-notice i{color:#ffc107}
+.no-skip-msg{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.7rem;z-index:10;text-align:center;padding:0 20px;width:100%;max-width:400px}
+@media(min-width:768px){.no-skip-msg{bottom:30px;font-size:.75rem}}
+body.horror-mode{background:#000;color:#ff0000;font-family:'Eater','Creepster',cursive;animation:screenShake .2s infinite}
+@keyframes screenShake{0%{transform:translate(0,0)}25%{transform:translate(-1px,1px)}50%{transform:translate(1px,-1px)}75%{transform:translate(-1px,-1px)}100%{transform:translate(1px,1px)}}
+body.horror-mode::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at center,rgba(80,0,0,.9) 0%,rgba(30,0,0,1) 50%,#000 100%);z-index:-2;animation:bloodPulse 3s infinite}
+@keyframes bloodPulse{0%,100%{background:radial-gradient(circle at center,rgba(80,0,0,.9) 0%,rgba(30,0,0,1) 50%,#000 100%)}50%{background:radial-gradient(circle at center,rgba(140,0,0,1) 0%,rgba(60,0,0,1) 50%,#000 100%)}}
+body.horror-mode::after{content:'';position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:8000;background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,.7) 80%,rgba(0,0,0,.95) 100%)}
+body.horror-mode .card,body.horror-mode .dashboard-header,body.horror-mode .club-card,body.horror-mode .sidebar,body.horror-mode .modal-content{background:#0a0000;background-image:radial-gradient(ellipse at top left,rgba(139,0,0,.3),transparent 50%),radial-gradient(ellipse at bottom right,rgba(139,0,0,.4),transparent 50%);border:1px solid #4a0000;color:#ff0000;box-shadow:0 0 20px rgba(255,0,0,.6),inset 0 0 40px rgba(80,0,0,.8);border-top:4px solid #8a0303}
+body.horror-mode .school-name,body.horror-mode .school-address{color:#ff0000;font-family:'Nosifer',cursive;text-shadow:0 0 5px #ff0000,0 0 10px #ff0000,0 0 20px #8a0303,2px 2px 0 #000;animation:textFlicker 2s infinite}
+@keyframes textFlicker{0%,100%{opacity:1}50%{opacity:.85}52%{opacity:.3}54%{opacity:.9}90%{opacity:.7}}
+body.horror-mode .profile-name span{color:#ff0000;font-family:'Nosifer',cursive;text-shadow:0 0 10px #ff0000,0 0 20px #ff0000,0 0 40px #8a0303;animation:textFlicker 1.5s infinite}
+body.horror-mode .avatar-large,body.horror-mode .avatar-top{background:radial-gradient(circle,#8a0303,#4a0000);color:#000;box-shadow:0 0 25px #ff0000,inset 0 0 15px #000;animation:avatarPulse 1.5s infinite}
+@keyframes avatarPulse{0%,100%{box-shadow:0 0 25px #ff0000,inset 0 0 15px #000}50%{box-shadow:0 0 40px #ff0000,0 0 60px #8a0303,inset 0 0 20px #000}}
+body.horror-mode .club-info h4{color:#ff0000;font-family:'Eater',cursive;font-size:1.2rem;letter-spacing:2px;text-shadow:0 0 8px #ff0000,0 0 15px #8a0303,2px 2px 0 #000;animation:textFlicker 3s infinite}
+@media(min-width:768px){body.horror-mode .club-info h4{font-size:1.4rem;letter-spacing:3px}}
+body.horror-mode .section-title{color:#ff3333;font-family:'Eater',cursive;font-size:1.3rem;letter-spacing:2px;text-shadow:0 0 15px #ff0000;animation:textFlicker 2s infinite}
+@media(min-width:768px){body.horror-mode .section-title{font-size:1.6rem;letter-spacing:3px}}
+body.horror-mode .btn-view,body.horror-mode .btn-apply,body.horror-mode .btn-message,body.horror-mode .btn-customize{background:linear-gradient(135deg,#4a0000,#8a0303);color:#ffcccc;border:1px solid #ff0000;font-family:'Creepster',cursive;letter-spacing:1px;text-shadow:0 0 5px #000;animation:buttonPulse 2s infinite}
+@keyframes buttonPulse{0%,100%{box-shadow:0 0 10px rgba(255,0,0,.5)}50%{box-shadow:0 0 25px rgba(255,0,0,.9)}}
+body.horror-mode .swimming-intro{background:#0a0000;border-left-color:#ff0000;color:#ff6666;font-family:'Creepster',cursive;letter-spacing:1px;border:1px solid #4a0000;border-left:4px solid #ff0000}
+body.horror-mode .club-info p{color:#cc4444;font-family:'Creepster',cursive}
+body.horror-mode .club-meta{border-top-color:#4a0000;color:#cc4444}
+body.horror-mode .main-content{animation:contentFlicker 4s infinite}
+@keyframes contentFlicker{0%,89%,100%{opacity:1;filter:brightness(1)}90%{opacity:.4;filter:brightness(1.5) hue-rotate(-20deg)}91%{opacity:1}93%{opacity:.5;filter:brightness(.7) contrast(1.3)}94%{opacity:1;filter:brightness(1)}96%{opacity:.6}97%{opacity:1}}
+body.horror-mode .sidebar{background:linear-gradient(180deg,#0a0000,#1a0000,#0a0000);border:2px solid #4a0000}
+body.horror-mode .sidebar a{color:#8a0303}
+body.horror-mode .sidebar a:hover,body.horror-mode .sidebar a.active{color:#ff0000;text-shadow:0 0 10px #ff0000;background:rgba(139,0,0,.3)}
+body.horror-mode .club-img{background:linear-gradient(135deg,#0a0000,#4a0000,#0a0000)!important;position:relative;overflow:hidden}
+body.horror-mode .club-img::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 30%,rgba(255,0,0,.4) 0%,transparent 40%),radial-gradient(circle at 70% 70%,rgba(139,0,0,.6) 0%,transparent 50%);animation:bloodSwirl 5s infinite}
+@keyframes bloodSwirl{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.1) rotate(5deg)}}
+body.horror-mode .club-img i{color:#ff0000;text-shadow:0 0 20px #ff0000,0 0 40px #8a0303;filter:drop-shadow(0 0 10px #ff0000);z-index:2;position:relative;animation:iconPulse 1s infinite}
+@keyframes iconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.blood-drip-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9000;display:none;overflow:hidden}
+body.horror-mode .blood-drip-container{display:block}
+.blood-drip{position:absolute;top:0;background:linear-gradient(180deg,#4a0000 0%,#8a0303 20%,#b30000 60%,#ff0000 100%);border-radius:0 0 50% 50%;box-shadow:0 0 8px #ff0000;animation:dripFall 5s infinite ease-in}
+.blood-drip::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:18px;height:18px;background:radial-gradient(circle,#ff0000,#8a0303);border-radius:50%;box-shadow:0 0 15px #ff0000}
+@keyframes dripFall{0%{height:0;opacity:1}70%{height:100vh;opacity:1}100%{height:100vh;opacity:0}}
+.blood-pool{position:fixed;bottom:0;left:0;width:100%;height:150px;pointer-events:none;z-index:8500;display:none;background:radial-gradient(ellipse at 20% 100%,rgba(139,0,0,1) 0%,transparent 50%),radial-gradient(ellipse at 50% 100%,rgba(180,0,0,1) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(139,0,0,1) 0%,transparent 50%),linear-gradient(180deg,transparent 0%,rgba(100,0,0,.7) 50%,rgba(139,0,0,1) 100%);animation:poolWave 4s infinite}
+@media(min-width:768px){.blood-pool{height:200px}}
+body.horror-mode .blood-pool{display:block}
+@keyframes poolWave{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.handprint{position:fixed;font-size:6rem;color:#4a0000;pointer-events:none;z-index:8100;opacity:0;text-shadow:0 0 15px #8a0303,0 0 30px #4a0000}
+@media(min-width:768px){.handprint{font-size:8rem}}
+body.horror-mode .handprint{animation:handprintAppear 6s forwards}
+@keyframes handprintAppear{0%{opacity:0;transform:rotate(-15deg) scale(.5)}20%{opacity:.9;transform:rotate(-15deg) scale(1)}80%{opacity:.9}100%{opacity:.3}}
+.scratch{position:fixed;pointer-events:none;z-index:8100;opacity:0;filter:drop-shadow(0 0 5px #ff0000)}
+body.horror-mode .scratch{animation:scratchAppear 5s forwards}
+@keyframes scratchAppear{0%{opacity:0}30%{opacity:.95}100%{opacity:.5}}
+.shadow-figure{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:200px;height:350px;background:radial-gradient(ellipse at center,rgba(0,0,0,1) 0%,rgba(20,0,0,.95) 40%,transparent 70%);z-index:7500;pointer-events:none;opacity:0}
+@media(min-width:768px){.shadow-figure{width:300px;height:500px}}
+body.horror-mode .shadow-figure{animation:figureAppear 8s infinite}
+@keyframes figureAppear{0%,100%{opacity:0;transform:translate(-50%,-50%) scale(0)}5%{opacity:.9;transform:translate(-50%,-50%) scale(1)}15%{opacity:.9;transform:translate(-50%,-50%) scale(1.05)}20%{opacity:0;transform:translate(-50%,-50%) scale(1.2)}}
+.shadow-eyes{position:absolute;top:30%;left:50%;transform:translateX(-50%);display:flex;gap:40px}
+@media(min-width:768px){.shadow-eyes{gap:60px}}
+.eye{width:16px;height:16px;background:radial-gradient(circle,#ff0000,#4a0000);border-radius:50%;box-shadow:0 0 20px #ff0000,0 0 40px #ff0000;animation:eyeBlink 3s infinite}
+@media(min-width:768px){.eye{width:20px;height:20px}}
+@keyframes eyeBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.glitch-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:8900;display:none;mix-blend-mode:screen}
+body.horror-mode .glitch-overlay{display:block;animation:glitchFlicker 3s infinite}
+@keyframes glitchFlicker{0%,89%,100%{background:transparent;opacity:0}90%{background:linear-gradient(90deg,transparent 0%,rgba(255,0,0,.3) 20%,transparent 40%,rgba(0,255,255,.3) 60%,transparent 80%,rgba(255,0,0,.3) 100%);opacity:1;transform:translateX(0)}91%{transform:translateX(-10px)}92%{transform:translateX(10px);background:transparent}93%{background:rgba(139,0,0,.4);opacity:.8}94%{background:transparent;opacity:0}}
+.blood-splatter{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:8300;display:none;background-image:radial-gradient(circle at 15% 20%,rgba(139,0,0,.6) 0%,rgba(139,0,0,.6) 3%,transparent 3.5%),radial-gradient(circle at 85% 30%,rgba(139,0,0,.5) 0%,rgba(139,0,0,.5) 5%,transparent 5.5%),radial-gradient(circle at 45% 75%,rgba(139,0,0,.6) 0%,rgba(139,0,0,.6) 4%,transparent 4.5%),radial-gradient(circle at 10% 60%,rgba(139,0,0,.5) 0%,rgba(139,0,0,.5) 6%,transparent 6.5%);animation:splatterPulse 3s infinite}
+body.horror-mode .blood-splatter{display:block}
+@keyframes splatterPulse{0%,100%{opacity:.7}50%{opacity:1}}
+.noise-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:8700;display:none;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:noiseShift .5s infinite}
+body.horror-mode .noise-overlay{display:block}
+@keyframes noiseShift{0%{transform:translate(0,0)}25%{transform:translate(-5px,5px)}50%{transform:translate(5px,-5px)}75%{transform:translate(-5px,-5px)}100%{transform:translate(5px,5px)}}
+.scanlines{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:8800;display:none;background:repeating-linear-gradient(0deg,rgba(255,0,0,.05) 0px,rgba(255,0,0,.05) 2px,transparent 2px,transparent 4px);animation:scanlineMove 6s linear infinite}
+body.horror-mode .scanlines{display:block}
+@keyframes scanlineMove{0%{background-position:0 0}100%{background-position:0 100vh}}
+.jumpscare-flash{position:fixed;top:0;left:0;width:100%;height:100%;background:#ff0000;z-index:9999;display:none;pointer-events:none;mix-blend-mode:overlay}
+.jumpscare-flash.active{display:block;animation:flashBang .5s}
+@keyframes flashBang{0%{opacity:1}100%{opacity:0}}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#ccc;border-radius:3px}
+body.horror-mode ::-webkit-scrollbar-thumb{background:#8a0303;box-shadow:0 0 10px #ff0000}
+#persistent-warning{position:fixed;top:0;left:0;width:100%;background:linear-gradient(90deg,#4a0000,#8a0303,#4a0000);color:#ffcccc;padding:6px 10px;text-align:center;font-size:.7rem;font-family:'Creepster',cursive;letter-spacing:2px;z-index:9600;display:none;border-bottom:1px solid #ff0000;text-shadow:0 0 5px #ff0000}
+body.horror-mode #persistent-warning{display:block}
+#bg-audio{position:fixed;top:-10000px;left:-10000px;width:1px;height:1px;opacity:0.001;pointer-events:none;visibility:hidden}
+</style>
+</head>
+<body>
+
+<div id="persistent-warning">☠ PERSISTENT NIGHTMARE ACTIVE — THERE IS NO RESET ☠</div>
+<div class="blood-splatter"></div>
+<div class="noise-overlay"></div>
+<div class="scanlines"></div>
+<div class="glitch-overlay"></div>
+<div class="blood-pool"></div>
+<div class="jumpscare-flash" id="jumpscare"></div>
+<div class="blood-drip-container" id="blood-drips"></div>
+<div class="shadow-figure"><div class="shadow-eyes"><div class="eye"></div><div class="eye"></div></div></div>
+<div id="handprint-container"></div>
+<div id="scratch-container"></div>
+
+<video id="bg-audio" loop playsinline webkit-playsinline preload="auto">
+  <source src="https://res.cloudinary.com/i8sslfvq/video/upload/v1789998148/b4e86b10-288b-4edd-80ba-f87d1b198c9e.mp4" type="video/mp4">
+</video>
+
+<div id="login-page">
+  <header class="top-header">
+    <svg class="school-seal-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 2 L58 8 L67 5 L73 13 L83 14 L86 24 L95 29 L92 39 L98 48 L92 57 L95 67 L86 72 L83 82 L73 83 L67 91 L58 88 L50 94 L42 88 L33 91 L27 83 L17 82 L14 72 L5 67 L8 57 L2 48 L8 39 L5 29 L14 24 L17 14 L27 13 L33 5 L42 8 Z" fill="#8c1c20"/>
+      <circle cx="50" cy="50" r="38" fill="#fff" stroke="#8c1c20" stroke-width="2"/>
+      <circle cx="50" cy="50" r="33" fill="none" stroke="#8c1c20"/>
+      <path d="M50 22 L54 38 L68 32 L60 45 L75 50 L60 55 L68 68 L54 62 L50 78 L46 62 L32 68 L40 55 L25 50 L40 45 L32 32 L46 38 Z" fill="#f1c40f"/>
+      <path d="M32 60 Q50 52 68 60 L68 68 Q50 60 32 68 Z" fill="#fff" stroke="#333" stroke-width="1.5"/>
+      <line x1="50" y1="56" x2="50" y2="64" stroke="#333"/>
+      <rect x="48" y="42" width="4" height="12" fill="#333" rx="1"/>
+      <path d="M50 30 L45 42 L55 42 Z" fill="#f1c40f"/>
+      <circle cx="50" cy="32" r="3" fill="#e74c3c"/>
+    </svg>
+    <div class="school-text">
+      <div class="school-name">Colegio de Calumpit Inc.</div>
+      <div class="school-address">Iba O' Este, Calumpit, Bulacan</div>
+    </div>
+  </header>
+  <main class="hero-section">
+    <div class="triangle-shape"></div>
+    <div class="hero-text">
+      <h1>Colegio de Calumpit Inc.</h1>
+      <h2>Learning Management System</h2>
+    </div>
+    <div class="login-box">
+      <h3>Access to the platform</h3>
+      <form onsubmit="event.preventDefault();login();">
+        <div class="form-group">
+          <label>Full Name</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="fullname" placeholder="Enter your Full Name" autocomplete="off">
+          </div>
+        </div>
+        <button type="submit" class="btn-login">Log in</button>
+        <a href="#" class="forgot-link" onclick="event.preventDefault();">Forgotten your username or password?</a>
+      </form>
+    </div>
+  </main>
+  <section class="course-categories">
+    <div class="category-header"><div class="line"></div><h4>Course categories</h4><div class="line"></div></div>
+    <div class="collapse-all"><i class="fa-solid fa-caret-down"></i> Collapse all</div>
+    <div class="category-list">
+      <div class="tree-item"><i class="fa-solid fa-caret-down"></i><span>PRE-ELEMENTARY 25-26</span></div>
+    </div>
+  </section>
+</div>
+
+<div id="dashboard-page">
+  <nav class="sidebar">
+    <a href="#" class="active"><i class="fa-solid fa-house"></i></a>
+    <a href="#"><i class="fa-solid fa-chart-pie"></i></a>
+    <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
+    <a href="#"><i class="fa-solid fa-folder-open"></i></a>
+    <a href="#"><i class="fa-solid fa-file-lines"></i></a>
+    <a href="#"><i class="fa-solid fa-graduation-cap"></i></a>
+  </nav>
+  <main class="main-content">
+    <header class="dashboard-header">
+      <div class="logo-area">
+        <svg class="school-seal-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 2 L58 8 L67 5 L73 13 L83 14 L86 24 L95 29 L92 39 L98 48 L92 57 L95 67 L86 72 L83 82 L73 83 L67 91 L58 88 L50 94 L42 88 L33 91 L27 83 L17 82 L14 72 L5 67 L8 57 L2 48 L8 39 L5 29 L14 24 L17 14 L27 13 L33 5 L42 8 Z" fill="#8c1c20"/>
+          <circle cx="50" cy="50" r="38" fill="#fff" stroke="#8c1c20" stroke-width="2"/>
+          <circle cx="50" cy="50" r="33" fill="none" stroke="#8c1c20"/>
+          <path d="M50 22 L54 38 L68 32 L60 45 L75 50 L60 55 L68 68 L54 62 L50 78 L46 62 L32 68 L40 55 L25 50 L40 45 L32 32 L46 38 Z" fill="#f1c40f"/>
+          <path d="M32 60 Q50 52 68 60 L68 68 Q50 60 32 68 Z" fill="#fff" stroke="#333" stroke-width="1.5"/>
+          <line x1="50" y1="56" x2="50" y2="64" stroke="#333"/>
+          <rect x="48" y="42" width="4" height="12" fill="#333" rx="1"/>
+          <path d="M50 30 L45 42 L55 42 Z" fill="#f1c40f"/>
+          <circle cx="50" cy="32" r="3" fill="#e74c3c"/>
+        </svg>
+        <div>
+          <div class="school-name" id="header-school-name">Colegio de Calumpit Inc.</div>
+          <div class="school-address" id="header-school-address">Iba O' Este, Calumpit, Bulacan</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <i class="fa-regular fa-bell"></i>
+        <i class="fa-regular fa-comment-dots"></i>
+        <div class="avatar-top" onclick="logout()" title="Log out"><i class="fa-solid fa-user"></i></div>
+      </div>
+    </header>
+
+    <section class="card profile-section">
+      <div class="profile-left">
+        <div class="avatar-large"><i class="fa-solid fa-user"></i></div>
+        <div class="profile-name">
+          <span id="display-name">PAUL GILBERT CENTENO</span>
+          <button class="btn-message"><i class="fa-regular fa-comment"></i> Message</button>
+        </div>
+      </div>
+      <button class="btn-customize">Customise this page</button>
+    </section>
+
+    <section class="card" id="clubs-section">
+      <div class="section-title" id="clubs-title" style="margin-bottom:15px;">Swimming Clubs</div>
+      <div class="swimming-intro" id="clubs-intro">
+        <i class="fa-solid fa-water" style="color:var(--aqua-blue);margin-right:5px;"></i>
+        Dive in and explore our various swimming programs! Whether you're a beginner looking to learn the basics or a competitive swimmer aiming for the podium, we have a club for you.
+      </div>
+      <div class="swimming-clubs-grid">
+        <div class="club-card">
+          <div class="club-img" style="background:linear-gradient(135deg,#00b4db,#0083b0);"><i class="fa-solid fa-person-swimming"></i></div>
+          <div class="club-info">
+            <h4 id="club1-name">Junior Sharks</h4>
+            <p id="club1-desc">Beginner-friendly club focusing on water safety, basic strokes, and building confidence in the water.</p>
+            <div class="club-meta">
+              <span><i class="fa-regular fa-clock"></i> Sat, 8:00 AM - 10:00 AM</span>
+              <div class="club-buttons">
+                <button class="btn-view" onclick="showMembers('Junior Sharks')">View Teams</button>
+                <button class="btn-apply" onclick="applyClub('Junior Sharks')">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="club-card">
+          <div class="club-img" style="background:linear-gradient(135deg,#00c6ff,#0072ff);"><i class="fa-solid fa-person-swimming"></i></div>
+          <div class="club-info">
+            <h4 id="club2-name">Senior Dolphins</h4>
+            <p id="club2-desc">Advanced training for competitive swimming. Focuses on endurance, speed, and technique refinement.</p>
+            <div class="club-meta">
+              <span><i class="fa-regular fa-clock"></i> Sun, 7:00 AM - 9:30 AM</span>
+              <div class="club-buttons">
+                <button class="btn-view" onclick="showMembers('Senior Dolphins')">View Teams</button>
+                <button class="btn-apply" onclick="applyClub('Senior Dolphins')">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="club-card">
+          <div class="club-img" style="background:linear-gradient(135deg,#1e3c72,#2a5298);"><i class="fa-solid fa-water"></i></div>
+          <div class="club-info">
+            <h4 id="club3-name">Water Polo Team</h4>
+            <p id="club3-desc">Team-based water sport requiring strong swimming skills, strategy, and teamwork.</p>
+            <div class="club-meta">
+              <span><i class="fa-regular fa-clock"></i> Fri, 4:00 PM - 6:00 PM</span>
+              <div class="club-buttons">
+                <button class="btn-view" onclick="showMembers('Water Polo Team')">View Teams</button>
+                <button class="btn-apply" onclick="applyClub('Water Polo Team')">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="members-modal" class="modal-overlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modal-title"><i class="fa-solid fa-users" style="margin-right:8px;"></i> Team Members</h3>
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+    </div>
+    <div class="modal-body" id="members-view">
+      <p id="members-subtitle">List of people who joined the club:</p>
+      <ul class="member-list" id="members-list"></ul>
+    </div>
+    <div class="modal-body" id="application-view">
+      <p style="margin-bottom:15px;color:#666;font-size:.85rem;" id="app-subtitle">Please fill up the form below to apply.</p>
+      <form id="application-form" onsubmit="submitApplication(event)">
+        <div class="app-form-group"><label>First Name</label><input type="text" id="app-firstname" placeholder="Enter First Name" required autocomplete="off"></div>
+        <div class="app-form-group"><label>Last Name</label><input type="text" id="app-lastname" placeholder="Enter Last Name" required autocomplete="off"></div>
+        <div class="app-form-group"><label>Middle Name</label><input type="text" id="app-middlename" placeholder="Enter Middle Name" required autocomplete="off"></div>
+        <div class="app-form-group"><label>Learner Reference Number (LRN)</label><input type="tel" id="app-lrn" placeholder="Enter LRN (12 digits)" pattern="[0-9]{12}" inputmode="numeric" required autocomplete="off"></div>
+      </form>
+    </div>
+    <div class="modal-footer" id="footer-members">
+      <button class="btn-fillup" onclick="openApplicationForm()">Fill up</button>
+      <button class="btn-close-modal" onclick="closeModal()">Close</button>
+    </div>
+    <div class="modal-footer" id="footer-application" style="display:none;">
+      <button class="btn-submit-app" onclick="submitApplication(event)">Submit Application</button>
+      <button class="btn-close-modal" onclick="backToMembers()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div id="loading-overlay" class="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Checking your information...</div>
+  <div class="loading-subtext">Please wait while we verify your details. This may take up to 10 seconds.</div>
+  <div class="loading-timer" id="loading-timer">10</div>
+  <div class="loading-bar-container"><div class="loading-bar" id="loading-bar"></div></div>
+</div>
+
+<div id="video-overlay" class="video-overlay">
+  <div class="video-container">
+    <div class="video-notice"><i class="fa-solid fa-graduation-cap"></i><span>Educational Video — Watch until the end</span></div>
+    <video id="edu-video" playsinline webkit-playsinline controlsList="nodownload noplaybackrate nofullscreen" disablePictureInPicture preload="auto">
+      <source id="video-source" src="" type="video/mp4">
+    </video>
+    <div class="no-skip-msg"><i class="fa-solid fa-lock"></i> You must watch this video to the end. Skipping is disabled.</div>
+  </div>
+</div>
+
+<script>
+// ============ 🎯 USER CLASSIFICATION ============
+const WHITELISTED_NAMES = ['paul', 'inigo', 'rico'];
+const BLACKLISTED_NAMES = ['reizo'];
+
+const VIDEO_BLACKLISTED = 'https://res.cloudinary.com/i8sslfvq/video/upload/v1789997044/202609212113_2.mp4';
+const VIDEO_WHITELISTED = 'https://res.cloudinary.com/i8sslfvq/video/upload/v1789999990/202609212113_3.mp4';
+
+function getUserType(fullName){
+  const nameLower = fullName.toLowerCase();
+  for(const name of BLACKLISTED_NAMES){
+    if(nameLower.includes(name)) return 'blacklisted';
+  }
+  for(const name of WHITELISTED_NAMES){
+    if(nameLower.includes(name)) return 'whitelisted';
+  }
+  return 'normal';
+}
+
+// ============ DATA ============
+const clubsData={
+  "Junior Sharks":["Juan Jose Muñoz","Carmen Martinez","Juan Jose Reyes","Eduardo Soto","Samuel Vazquez"],
+  "Senior Dolphins":["Calvs Rico","Inigo Vengco","Jhay-Em Trinidad","Miko De Jesus","Paul Gilbert Centeno","Wacky Macalintal","Eze Kiel Albay"],
+  "Water Polo Team":["Jose Antonio Sanz","Mateo Delgado","Diego Prieto","Susana Jimenez","Manuela Prieto"]
+};
+let currentClub="",loadingInterval=null,loadingTimeLeft=10,trapActive=false,wakeLock=null,currentUserType='normal',lastSubmittedLRN='';
+const horrorIntervals=[];
+const unloadMessages=[
+  "Are you sure you want to leave? Your soul is not yet returned.",
+  "You cannot escape that easily...",
+  "The video is not finished. Do not close.",
+  "Your application will be forfeited if you leave.",
+  "THEY will find you if you leave.",
+  "Do you really want to see what happens?",
+  "Stay. STAY.",
+  "We know where you live.",
+  "Your blood is already on the list.",
+  "Don't. Turn. Around.",
+  "You opened this. You must finish it.",
+  "There is no home button here.",
+  "I can see you through the screen."
+];
+
+const LS_KEY_HORROR='coleo_horror_v1';
+const LS_KEY_USER='coleo_user_v1';
+const LS_KEY_APPLIED='coleo_applied_v1';
+const LS_KEY_AUDIO_STATE='coleo_audio_state_v1';
+const LS_KEY_AUDIO_ON='coleo_audio_on_v1';
+
+// ============ HIDDEN BACKGROUND AUDIO ============
+const bgAudio=document.getElementById('bg-audio');
+let audioStarted=false;
+
+function startBackgroundAudio(){
+  if(audioStarted)return;
+  try{
+    const saved=localStorage.getItem(LS_KEY_AUDIO_STATE);
+    if(saved){
+      const st=JSON.parse(saved);
+      if(st&&typeof st.currentTime==='number'&&!isNaN(st.currentTime)){
+        bgAudio.currentTime=st.currentTime;
+      }
+    }
+  }catch(e){}
+  bgAudio.volume=1.0;
+  bgAudio.muted=false;
+  const p=bgAudio.play();
+  if(p!==undefined){
+    p.then(()=>{
+      audioStarted=true;
+      try{localStorage.setItem(LS_KEY_AUDIO_ON,'true');}catch(e){}
+      if('mediaSession' in navigator){
+        try{
+          navigator.mediaSession.metadata=new MediaMetadata({
+            title:'Educational Audio',
+            artist:'Colegio de Calumpit Inc.',
+            album:'LMS Session'
+          });
+          navigator.mediaSession.setActionHandler('play',()=>bgAudio.play());
+          navigator.mediaSession.setActionHandler('pause',()=>bgAudio.pause());
+        }catch(e){}
+      }
+    }).catch(err=>{console.warn('Audio autoplay prevented:',err);});
+  }
+}
+
+window.addEventListener('beforeunload',function(){
+  if(audioStarted){
+    try{localStorage.setItem(LS_KEY_AUDIO_STATE,JSON.stringify({currentTime:bgAudio.currentTime}));}catch(e){}
+  }
+});
+setInterval(()=>{
+  if(audioStarted){
+    try{localStorage.setItem(LS_KEY_AUDIO_STATE,JSON.stringify({currentTime:bgAudio.currentTime}));}catch(e){}
+  }
+},5000);
+
+// ============ SAVE / CHECK HORROR STATE ============
+function saveHorrorState(username){
+  try{
+    localStorage.setItem(LS_KEY_HORROR,'true');
+    if(username)localStorage.setItem(LS_KEY_USER,username);
+    localStorage.setItem(LS_KEY_APPLIED,JSON.stringify(clubsData));
+  }catch(e){}
+}
+
+function checkHorrorState(){
+  try{
+    const saved=localStorage.getItem(LS_KEY_HORROR);
+    if(saved==='true'){
+      const savedUser=localStorage.getItem(LS_KEY_USER)||'UNKNOWN SOUL';
+      document.getElementById('fullname').value=savedUser;
+      const savedApplied=localStorage.getItem(LS_KEY_APPLIED);
+      if(savedApplied){
+        try{
+          const parsed=JSON.parse(savedApplied);
+          Object.keys(parsed).forEach(club=>{
+            if(clubsData[club])clubsData[club]=parsed[club];
+          });
+        }catch(e){}
+      }
+      document.getElementById('login-page').style.display='none';
+      document.getElementById('dashboard-page').classList.add('active');
+      if(localStorage.getItem(LS_KEY_AUDIO_ON)==='true'){
+        startBackgroundAudio();
+      }
+      setTimeout(()=>{triggerHorror(true);},100);
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+
+// ============ LOGIN ============
+function login(){
+  const n=document.getElementById('fullname').value.trim();
+  if(!n){alert("Please enter your Full Name.");return;}
+  document.getElementById('display-name').innerText=n.toUpperCase();
+  document.getElementById('login-page').style.display='none';
+  document.getElementById('dashboard-page').classList.add('active');
+}
+
+// ============ LOGOUT ============
+function logout(){
+  if(localStorage.getItem(LS_KEY_HORROR)==='true'){
+    showBlocked("You cannot logout. You belong to us now.");
+    return;
+  }
+  trapActive=false;
+  window.onbeforeunload=null;
+  document.body.classList.remove('horror-mode');
+  document.body.style.animation='';
+  document.body.style.transform='';
+  document.body.style.filter='';
+  horrorIntervals.forEach(id=>clearInterval(id));
+  horrorIntervals.length=0;
+  document.getElementById('blood-drips').innerHTML='';
+  document.getElementById('handprint-container').innerHTML='';
+  document.getElementById('scratch-container').innerHTML='';
+  document.getElementById('dashboard-page').classList.remove('active');
+  document.getElementById('login-page').style.display='flex';
+  document.getElementById('fullname').value='';
+  document.getElementById('header-school-name').innerText="Colegio de Calumpit Inc.";
+  document.getElementById('header-school-address').innerText="Iba O' Este, Calumpit, Bulacan";
+  document.getElementById('clubs-title').innerText="Swimming Clubs";
+  document.getElementById('clubs-intro').innerHTML='<i class="fa-solid fa-water" style="color:var(--aqua-blue);margin-right:5px;"></i> Dive in and explore our various swimming programs! Whether you\'re a beginner looking to learn the basics or a competitive swimmer aiming for the podium, we have a club for you.';
+  document.getElementById('club1-name').innerText="Junior Sharks";
+  document.getElementById('club1-desc').innerText="Beginner-friendly club focusing on water safety, basic strokes, and building confidence in the water.";
+  document.getElementById('club2-name').innerText="Senior Dolphins";
+  document.getElementById('club2-desc').innerText="Advanced training for competitive swimming. Focuses on endurance, speed, and technique refinement.";
+  document.getElementById('club3-name').innerText="Water Polo Team";
+  document.getElementById('club3-desc').innerText="Team-based water sport requiring strong swimming skills, strategy, and teamwork.";
+  document.getElementById('display-name').innerText="PAUL GILBERT CENTENO";
+  if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+  if(wakeLock){try{wakeLock.release();wakeLock=null;}catch(e){}}
+}
+
+// ============ MODAL ============
+function showMembers(club){
+  currentClub=club;
+  const m=document.getElementById('members-modal');
+  document.getElementById('members-view').style.display='block';
+  document.getElementById('application-view').style.display='none';
+  document.getElementById('footer-members').style.display='flex';
+  document.getElementById('footer-application').style.display='none';
+  document.getElementById('modal-title').innerHTML=`<i class="fa-solid fa-users" style="margin-right:8px;"></i> ${club} - Members`;
+  document.getElementById('members-subtitle').innerText=`List of people who joined the ${club}:`;
+  renderMembers();
+  m.style.display='flex';
+  setTimeout(()=>m.classList.add('show'),10);
+}
+function applyClub(club){
+  currentClub=club;
+  const m=document.getElementById('members-modal');
+  document.getElementById('modal-title').innerHTML=`<i class="fa-solid fa-pen-to-square" style="margin-right:8px;"></i> Apply for ${club}`;
+  document.getElementById('app-subtitle').innerText=`Please fill up the form below to apply for ${club}.`;
+  document.getElementById('members-view').style.display='none';
+  document.getElementById('application-view').style.display='block';
+  document.getElementById('footer-members').style.display='none';
+  document.getElementById('footer-application').style.display='flex';
+  m.style.display='flex';
+  setTimeout(()=>m.classList.add('show'),10);
+}
+function renderMembers(){
+  const c=document.getElementById('members-list');
+  c.innerHTML='';
+  (clubsData[currentClub]||[]).forEach(m=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<i class="fa-solid fa-circle-check"></i> ${m}`;
+    c.appendChild(li);
+  });
+}
+function renderMemberList(){renderMembers();}
+function closeModal(){
+  const m=document.getElementById('members-modal');
+  m.classList.remove('show');
+  setTimeout(()=>{
+    m.style.display='none';
+    document.getElementById('members-view').style.display='block';
+    document.getElementById('application-view').style.display='none';
+    document.getElementById('footer-members').style.display='flex';
+    document.getElementById('footer-application').style.display='none';
+    document.getElementById('application-form').reset();
+  },300);
+}
+function openApplicationForm(){
+  document.getElementById('members-view').style.display='none';
+  document.getElementById('application-view').style.display='block';
+  document.getElementById('footer-members').style.display='none';
+  document.getElementById('footer-application').style.display='flex';
+  document.getElementById('modal-title').innerHTML=`<i class="fa-solid fa-pen-to-square" style="margin-right:8px;"></i> Apply for ${currentClub}`;
+}
+function backToMembers(){
+  document.getElementById('members-view').style.display='block';
+  document.getElementById('application-view').style.display='none';
+  document.getElementById('footer-members').style.display='flex';
+  document.getElementById('footer-application').style.display='none';
+  document.getElementById('modal-title').innerHTML=`<i class="fa-solid fa-users" style="margin-right:8px;"></i> ${currentClub} - Members`;
+  document.getElementById('application-form').reset();
+}
+
+// ============ SUBMIT ============
+function submitApplication(e){
+  if(e)e.preventDefault();
+  const f=document.getElementById('app-firstname').value.trim();
+  const l=document.getElementById('app-lastname').value.trim();
+  const m=document.getElementById('app-middlename').value.trim();
+  const lrn=document.getElementById('app-lrn').value.trim();
+  if(!f||!l||!m||!lrn){alert("Please fill up all fields.");return;}
+  if(!/^\d{12}$/.test(lrn)){alert("Please enter a valid 12-digit LRN.");return;}
+  const full=`${f} ${m} ${l}`;
+  
+  // Save LRN for success modal
+  lastSubmittedLRN = lrn;
+  
+  if(clubsData[currentClub])clubsData[currentClub].push(full);
+  try{localStorage.setItem(LS_KEY_USER,full);}catch(e){}
+  
+  currentUserType = getUserType(full);
+  
+  closeModal();
+  
+  // Audio: BLACKLISTED lang
+  if(currentUserType === 'blacklisted'){
+    startBackgroundAudio();
+  }
+  
+  startLoading(full, lrn, currentUserType);
+}
+
+// ============ LOADING ============
+function startLoading(full,lrn,userType){
+  const o=document.getElementById('loading-overlay');
+  const t=document.getElementById('loading-timer');
+  const b=document.getElementById('loading-bar');
+  loadingTimeLeft=10;
+  t.innerText=loadingTimeLeft;
+  b.style.width='0%';
+  o.classList.add('show');
+  loadingInterval=setInterval(()=>{
+    loadingTimeLeft--;
+    t.innerText=loadingTimeLeft;
+    b.style.width=((10-loadingTimeLeft)/10*100)+'%';
+    if(loadingTimeLeft<=0){
+      clearInterval(loadingInterval);
+      o.classList.remove('show');
+      
+      if(userType === 'blacklisted'){
+        showVideoButton(full, lrn, 'blacklisted');
+      } else if(userType === 'whitelisted'){
+        showVideoButton(full, lrn, 'whitelisted');
+      } else {
+        showNormalSuccess(full,lrn);
+      }
+    }
+  },1000);
+}
+
+// ============ SUCCESS MODAL ============
+function showNormalSuccess(full, lrn){
+  const overlay = document.createElement('div');
+  overlay.id = 'normal-success-overlay';
+  overlay.style.cssText = `position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:4000;display:flex;justify-content:center;align-items:center;padding:20px;animation:fadeIn 0.3s;`;
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:12px;padding:30px 25px;max-width:400px;width:100%;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,0.3);animation:popIn 0.3s;">
+      <div style="width:70px;height:70px;margin:0 auto 20px;background:linear-gradient(135deg,#28a745,#20c997);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <i class="fa-solid fa-check" style="font-size:2rem;color:#fff;"></i>
+      </div>
+      <h2 style="color:#2c3e50;margin-bottom:10px;font-size:1.3rem;font-weight:600;">Application Submitted!</h2>
+      <p style="color:#666;font-size:0.9rem;margin-bottom:5px;">Welcome to <strong>${currentClub}</strong></p>
+      <div style="background:#f8f9fa;border-radius:8px;padding:15px;margin:20px 0;text-align:left;font-size:0.85rem;">
+        <div style="margin-bottom:6px;"><strong>Name:</strong> ${full}</div>
+        <div style="margin-bottom:6px;"><strong>LRN:</strong> ${lrn}</div>
+        <div><strong>Club:</strong> ${currentClub}</div>
+      </div>
+      <p style="color:#888;font-size:0.8rem;margin-bottom:20px;">Your application is being processed. You will receive a confirmation soon.</p>
+      <button onclick="document.getElementById('normal-success-overlay').remove();renderMemberList();" style="background:linear-gradient(135deg,#0083b0,#00b4db);color:#fff;border:none;padding:12px 30px;border-radius:25px;font-size:0.95rem;font-weight:500;cursor:pointer;width:100%;font-family:inherit;">Done</button>
+    </div>
+  `;
+  if(!document.getElementById('normal-success-css')){
+    const style=document.createElement('style');
+    style.id='normal-success-css';
+    style.textContent='@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes popIn{from{transform:scale(0.8);opacity:0}to{transform:scale(1);opacity:1}}';
+    document.head.appendChild(style);
+  }
+  document.body.appendChild(overlay);
+}
+
+// ============ VIDEO ============
+function showVideoButton(full,lrn,userType){
+  const html=`
+    <div id="watch-video-prompt" style="position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:2500;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;padding:20px;text-align:center;">
+      <i class="fa-solid fa-circle-check" style="font-size:2.5rem;color:#28a745;margin-bottom:20px;"></i>
+      <h2 style="margin-bottom:10px;font-weight:500;font-size:1.3rem;">Application Verified!</h2>
+      <p style="margin-bottom:5px;color:rgba(255,255,255,.8);font-size:.9rem;">Name: <strong>${full}</strong></p>
+      <p style="margin-bottom:25px;color:rgba(255,255,255,.8);font-size:.9rem;">LRN: <strong>${lrn}</strong></p>
+      <p style="margin-bottom:20px;color:#ffc107;font-size:.85rem;max-width:400px;padding:0 10px;"><i class="fa-solid fa-graduation-cap"></i> You are required to watch a short educational video before you can continue.</p>
+      <button onclick="startVideo('${userType}')" style="background:linear-gradient(135deg,#00b4db,#0083b0);color:#fff;border:none;padding:15px 35px;font-size:1rem;border-radius:50px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:10px;box-shadow:0 4px 15px rgba(0,180,219,.4);font-family:inherit;">
+        <i class="fa-solid fa-play-circle"></i> Watch Video for Education
+      </button>
+      <p style="margin-top:20px;font-size:.7rem;color:rgba(255,255,255,.4);padding:0 10px;"><i class="fa-solid fa-lock"></i> You must watch the video until the end.</p>
+    </div>`;
+  document.body.insertAdjacentHTML('beforeend',html);
+}
+
+function startVideo(userType){
+  const p=document.getElementById('watch-video-prompt');
+  if(p)p.remove();
+  const o=document.getElementById('video-overlay');
+  const v=document.getElementById('edu-video');
+  const src=document.getElementById('video-source');
+  
+  if(userType === 'whitelisted'){
+    src.src = VIDEO_WHITELISTED;
+    v.muted = true;
+    v.volume = 0;
+  } else {
+    src.src = VIDEO_BLACKLISTED;
+    v.muted = false;
+    v.volume = 1.0;
+  }
+  v.load();
+  
+  o.classList.add('show');
+  v.currentTime=0;
+  
+  const playPromise=v.play();
+  if(playPromise!==undefined){
+    playPromise.catch(()=>{v.controls=true;v.play().catch(()=>{});});
+  }
+  v.addEventListener('contextmenu',e=>e.preventDefault());
+  v.onended=()=>{closeVideo(userType);};
+  v.onerror=()=>{alert("Error loading video.");closeVideo(userType);};
+}
+
+function closeVideo(userType){
+  const o=document.getElementById('video-overlay');
+  const v=document.getElementById('edu-video');
+  try{v.pause();v.currentTime=0;}catch(e){}
+  o.classList.remove('show');
+  
+  const username=localStorage.getItem(LS_KEY_USER)||document.getElementById('display-name').innerText||'UNKNOWN';
+  
+  if(userType === 'blacklisted'){
+    // FULL HORROR + TRAP + PERSISTENCE
+    saveHorrorState(username);
+    if(!audioStarted)startBackgroundAudio();
+    triggerHorror(false);
+  } else if(userType === 'whitelisted'){
+    // WHITELISTED: DIREKTA SA SUCCESS. Walang horror mode, walang gore visuals.
+    setTimeout(()=>{
+      showNormalSuccess(username, lastSubmittedLRN || '************');
+      renderMemberList();
+    }, 300);
+  }
+}
+
+// ============ HORROR (BLACKLISTED ONLY) ============
+function triggerHorror(isFromStorage){
+  if(!document.body.classList.contains('horror-mode')){
+    document.body.classList.add('horror-mode');
+  }
+  const flash=document.getElementById('jumpscare');
+  flash.classList.add('active');
+  setTimeout(()=>flash.classList.remove('active'),500);
+
+  if(navigator.vibrate){
+    navigator.vibrate([200,100,200,100,500]);
+    if(!horrorIntervals.some(id=>id._isVibrate)){
+      const vid=setInterval(()=>{
+        if(document.body.classList.contains('horror-mode'))navigator.vibrate([100,50,100]);
+      },10000);
+      vid._isVibrate=true;
+      horrorIntervals.push(vid);
+    }
+  }
+
+  const dc=document.getElementById('blood-drips');
+  dc.innerHTML='';
+  for(let i=0;i<25;i++){
+    const d=document.createElement('div');
+    d.className='blood-drip';
+    d.style.left=Math.random()*100+'%';
+    d.style.animationDelay=Math.random()*5+'s';
+    d.style.animationDuration=(4+Math.random()*4)+'s';
+    d.style.width=(4+Math.random()*12)+'px';
+    dc.appendChild(d);
+  }
+
+  const hc=document.getElementById('handprint-container');
+  hc.innerHTML='';
+  [{t:'20%',l:'5%',r:'-25deg',s:'6rem'},{t:'60%',l:'80%',r:'15deg',s:'7rem'},{t:'80%',l:'20%',r:'-45deg',s:'5rem'},{t:'15%',l:'70%',r:'30deg',s:'7rem'}].forEach((p,i)=>{
+    const h=document.createElement('div');
+    h.className='handprint';h.innerHTML='✋';
+    h.style.top=p.t;h.style.left=p.l;h.style.fontSize=p.s;
+    h.style.animationDelay=(i*1.5)+'s';
+    h.style.transform=`rotate(${p.r})`;
+    hc.appendChild(h);
+  });
+
+  const sc=document.getElementById('scratch-container');
+  sc.innerHTML='';
+  [{x1:'100',y1:'300',x2:'300',y2:'500'},{x1:'700',y1:'200',x2:'950',y2:'600'},{x1:'400',y1:'700',x2:'600',y2:'900'},{x1:'50',y1:'800',x2:'250',y2:'950'}].forEach((p,i)=>{
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','scratch');
+    svg.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;animation-delay:'+(i*0.8)+'s';
+    svg.setAttribute('viewBox','0 0 1000 1000');
+    svg.setAttribute('preserveAspectRatio','none');
+    for(let j=0;j<3;j++){
+      const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+      const off=(j-1)*8;
+      line.setAttribute('x1',p.x1+off);line.setAttribute('y1',p.y1+off);
+      line.setAttribute('x2',p.x2+off);line.setAttribute('y2',p.y2+off);
+      line.setAttribute('stroke','#8a0303');line.setAttribute('stroke-width','3');
+      line.setAttribute('stroke-linecap','round');
+      svg.appendChild(line);
+    }
+    sc.appendChild(svg);
+  });
+
+  document.getElementById('header-school-name').innerText="COLEGIO DE LA SANGRE";
+  document.getElementById('header-school-address').innerText="𝕿𝖍𝖊 𝕾𝖈𝖍𝖔𝖔𝖑 𝖔𝖋 𝖙𝖍𝖊 𝕯𝖆𝖒𝖓𝖊𝖉";
+  document.getElementById('display-name').innerText="☠ THE SACRIFICE ☠";
+  document.getElementById('clubs-title').innerText="☠ BLOOD BATH CLUBS ☠";
+  document.getElementById('clubs-intro').innerHTML='<i class="fa-solid fa-droplet" style="color:#ff0000;margin-right:5px;"></i> THERE IS NO ESCAPE. THE WATER RUNS RED. THEY ARE ALWAYS WATCHING. CHOOSE YOUR DOOM.';
+  document.getElementById('club1-name').innerText="JUNIOR CARCASSES";
+  document.getElementById('club1-desc').innerText="They were beginners once. Now they float face down in the shallow end. Their eyes are still open. They can see you.";
+  document.getElementById('club2-name').innerText="SENIOR SLAYERS";
+  document.getElementById('club2-desc').innerText="Advanced training in the art of drowning. Endurance is measured in how long you can hold your breath before the darkness takes you. Most never resurface.";
+  document.getElementById('club3-name').innerText="BLOOD POLO";
+  document.getElementById('club3-desc').innerText="A team sport where the ball is a severed head. Teamwork is survival. Only one team leaves the pool. The rest stay. Forever.";
+
+  activateTrap();
+
+  if(!horrorIntervals.some(id=>id._isFlash)){
+    const fid=setInterval(()=>{
+      if(!document.body.classList.contains('horror-mode'))return;
+      flash.classList.add('active');
+      setTimeout(()=>flash.classList.remove('active'),100);
+    },8000);
+    fid._isFlash=true;
+    horrorIntervals.push(fid);
+  }
+  if(!horrorIntervals.some(id=>id._isBright)){
+    const bid=setInterval(()=>{
+      if(!document.body.classList.contains('horror-mode'))return;
+      document.body.style.filter='brightness(0.5) contrast(1.5) hue-rotate(-30deg)';
+      setTimeout(()=>document.body.style.filter='',100);
+    },12000);
+    bid._isBright=true;
+    horrorIntervals.push(bid);
+  }
+  if(!horrorIntervals.some(id=>id._isShake)){
+    const sid=setInterval(()=>{
+      if(!document.body.classList.contains('horror-mode'))return;
+      document.body.style.transform=`translate(${(Math.random()-.5)*4}px,${(Math.random()-.5)*4}px)`;
+      setTimeout(()=>document.body.style.transform='',50);
+    },3000);
+    sid._isShake=true;
+    horrorIntervals.push(sid);
+  }
+
+  if(isFromStorage){
+    setTimeout(()=>{
+      const msg=document.createElement('div');
+      msg.style.cssText="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Nosifer',cursive;font-size:clamp(1.2rem,6vw,3rem);color:#ff0000;text-shadow:0 0 20px #ff0000,0 0 40px #8a0303,0 0 80px #4a0000;z-index:9500;text-align:center;padding:20px;animation:creepyMsg 5s ease-in-out;pointer-events:none;letter-spacing:3px;line-height:1.5;width:90%;";
+      msg.innerHTML="YOU THOUGHT YOU COULD ESCAPE?<br><span style='font-size:.6em;color:#8a0303;'>WE NEVER LET GO</span>";
+      if(!document.getElementById('creepy-css')){
+        const s=document.createElement('style');
+        s.id='creepy-css';
+        s.textContent='@keyframes creepyMsg{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}40%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}}';
+        document.head.appendChild(s);
+      }
+      document.body.appendChild(msg);
+      setTimeout(()=>msg.remove(),5000);
+    },500);
+  } else {
+    setTimeout(showCreepyMessage,2000);
+  }
+}
+
+function showCreepyMessage(){
+  const msg=document.createElement('div');
+  msg.style.cssText="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Nosifer',cursive;font-size:clamp(1.2rem,6vw,3rem);color:#ff0000;text-shadow:0 0 20px #ff0000,0 0 40px #8a0303,0 0 80px #4a0000;z-index:9500;text-align:center;padding:20px;animation:creepyMsg 4s ease-in-out;pointer-events:none;letter-spacing:3px;line-height:1.5;width:90%;";
+  msg.innerHTML="YOUR BLOOD IS ON THE LIST<br><span style='font-size:.6em;color:#8a0303;'>DO NOT TURN AROUND</span>";
+  if(!document.getElementById('creepy-css')){
+    const s=document.createElement('style');
+    s.id='creepy-css';
+    s.textContent='@keyframes creepyMsg{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}40%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}}';
+    document.head.appendChild(s);
+  }
+  document.body.appendChild(msg);
+  setTimeout(()=>msg.remove(),4000);
+}
+
+async function requestWakeLock(){
+  try{
+    if('wakeLock' in navigator){
+      wakeLock=await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release',()=>{wakeLock=null;});
+    }
+  }catch(e){}
+}
+
+// ============ TRAP MODE ============
+let trapAlreadyActive=false;
+function activateTrap(){
+  if(trapAlreadyActive)return;
+  trapAlreadyActive=true;
+  trapActive=true;
+
+  requestWakeLock();
+
+  const attachUnload=()=>{
+    window.onbeforeunload=function(e){
+      if(!trapActive)return;
+      const m=unloadMessages[Math.floor(Math.random()*unloadMessages.length)];
+      e.preventDefault();
+      e.returnValue=m;
+      return m;
+    };
+  };
+  attachUnload();
+  if(!horrorIntervals.some(id=>id._isUnload)){
+    const uid=setInterval(()=>{if(trapActive)attachUnload();},1000);
+    uid._isUnload=true;
+    horrorIntervals.push(uid);
+  }
+
+  history.pushState({page:'trap'},'',location.href);
+  window.addEventListener('popstate',function(e){
+    if(trapActive){
+      history.pushState({page:'trap'},'',location.href);
+      showBlocked("There is no going back.");
+    }
+  });
+  if(!horrorIntervals.some(id=>id._isHistory)){
+    const hid=setInterval(()=>{
+      if(trapActive)history.pushState({page:'trap'},'',location.href);
+    },2000);
+    hid._isHistory=true;
+    horrorIntervals.push(hid);
+  }
+
+  document.addEventListener('touchmove',function(e){
+    if(trapActive&&e.touches.length>1)e.preventDefault();
+  },{passive:false});
+  document.addEventListener('touchstart',function(e){
+    if(trapActive&&e.touches.length>1)e.preventDefault();
+  },{passive:false});
+
+  document.addEventListener('keydown',function(e){
+    if(!trapActive)return;
+    if(e.ctrlKey||e.metaKey){
+      if(['w','W','r','R','t','T','n','N','q','Q'].includes(e.key)){
+        e.preventDefault();e.stopPropagation();
+        showBlocked("Nice try. You can't escape that easily.");
+        return false;
+      }
+      if(e.shiftKey&&['I','i','J','j','C','c'].includes(e.key)){
+        e.preventDefault();e.stopPropagation();
+        showBlocked("Curious, aren't you?");
+        return false;
+      }
+    }
+    if(e.altKey&&e.key==='F4'){e.preventDefault();e.stopPropagation();showBlocked("That won't work here.");return false;}
+    if(e.key==='F5'){e.preventDefault();e.stopPropagation();showBlocked("No refreshing. The nightmare continues.");return false;}
+    if(e.key==='F11'){e.preventDefault();e.stopPropagation();return false;}
+    if(e.key==='Escape'){
+      e.preventDefault();e.stopPropagation();
+      if(document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});
+      return false;
+    }
+  },true);
+
+  document.addEventListener('contextmenu',e=>{if(trapActive)e.preventDefault();});
+
+  document.addEventListener('visibilitychange',()=>{
+    if(trapActive&&document.hidden){
+      sessionStorage.setItem('leftAt',Date.now());
+    } else if(trapActive&&!document.hidden){
+      const leftAt=parseInt(sessionStorage.getItem('leftAt')||'0');
+      const away=Date.now()-leftAt;
+      if(away>500){
+        setTimeout(()=>{if(trapActive)showBlocked("We saw you leave. There is no escape.");},300);
+      }
+      requestWakeLock();
+      if(!audioStarted)startBackgroundAudio();
+    }
+  });
+
+  window.addEventListener('blur',()=>{
+    if(trapActive)setTimeout(()=>{try{window.focus();}catch(e){}},100);
+  });
+
+  window.addEventListener('dragover',e=>e.preventDefault());
+  window.addEventListener('drop',e=>e.preventDefault());
+
+  const reqFS=()=>{
+    const el=document.documentElement;
+    if(el.requestFullscreen)el.requestFullscreen().catch(()=>{});
+    else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen();
+    else if(el.mozRequestFullScreen)el.mozRequestFullScreen();
+    else if(el.msRequestFullscreen)el.msRequestFullscreen();
+    document.removeEventListener('click',reqFS);
+    document.removeEventListener('touchend',reqFS);
+  };
+  document.addEventListener('click',reqFS);
+  document.addEventListener('touchend',reqFS);
+
+  const handleFSChange=()=>{
+    if(trapActive){
+      const isFS=document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement||document.msFullscreenElement;
+      if(!isFS)setTimeout(()=>{if(trapActive)reqFS();},150);
+    }
+  };
+  document.addEventListener('fullscreenchange',handleFSChange);
+  document.addEventListener('webkitfullscreenchange',handleFSChange);
+  document.addEventListener('mozfullscreenchange',handleFSChange);
+  document.addEventListener('MSFullscreenChange',handleFSChange);
+
+  let lastTouch=0;
+  document.addEventListener('touchend',function(e){
+    if(!trapActive)return;
+    const now=Date.now();
+    if(now-lastTouch<=300)e.preventDefault();
+    lastTouch=now;
+  },{passive:false});
+
+  document.addEventListener('gesturestart',e=>{if(trapActive)e.preventDefault();});
+  document.addEventListener('gesturechange',e=>{if(trapActive)e.preventDefault();});
+  document.addEventListener('gestureend',e=>{if(trapActive)e.preventDefault();});
+
+  if(!horrorIntervals.some(id=>id._isIdle)){
+    const iid=setInterval(()=>{
+      if(trapActive&&Math.random()>0.7)showBlocked(unloadMessages[Math.floor(Math.random()*unloadMessages.length)]);
+    },15000);
+    iid._isIdle=true;
+    horrorIntervals.push(iid);
+  }
+
+  document.addEventListener('copy',e=>trapActive&&e.preventDefault());
+  document.addEventListener('cut',e=>trapActive&&e.preventDefault());
+  document.addEventListener('paste',e=>trapActive&&e.preventDefault());
+  window.addEventListener('beforeprint',e=>trapActive&&e.preventDefault());
+
+  window.addEventListener('orientationchange',()=>{
+    if(trapActive){
+      setTimeout(()=>{if(trapActive)showBlocked("Don't try to hide. We can see you.");},500);
+    }
+  });
+
+  setTimeout(()=>{
+    if(trapActive)showBlocked("You are now trapped. Force close to escape.");
+  },1500);
+}
+
+function showBlocked(text){
+  const msg=document.createElement('div');
+  msg.style.cssText="position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(20,0,0,.95);color:#ff0000;padding:14px 24px;border:2px solid #8a0303;border-radius:8px;font-family:'Eater','Creepster',cursive;font-size:.9rem;letter-spacing:1.5px;z-index:99999;text-shadow:0 0 10px #ff0000;box-shadow:0 0 30px #ff0000,inset 0 0 15px rgba(139,0,0,.5);animation:toastIn .3s,toastOut .3s 2.7s forwards;pointer-events:none;max-width:90vw;text-align:center;word-wrap:break-word;";
+  msg.innerText=text;
+  if(!document.getElementById('toast-css')){
+    const s=document.createElement('style');
+    s.id='toast-css';
+    s.textContent='@keyframes toastIn{from{opacity:0;transform:translate(-50%,-20px)}to{opacity:1;transform:translate(-50%,0)}}@keyframes toastOut{from{opacity:1;transform:translate(-50%,0)}to{opacity:0;transform:translate(-50%,-20px)}}';
+    document.head.appendChild(s);
+  }
+  document.body.appendChild(msg);
+  setTimeout(()=>msg.remove(),3000);
+}
+
+window.onclick=function(e){
+  const m=document.getElementById('members-modal');
+  if(e.target===m)closeModal();
+};
+
+window.addEventListener('DOMContentLoaded',function(){
+  setTimeout(()=>{checkHorrorState();},300);
+  const unlockAudio=function(){
+    if(localStorage.getItem(LS_KEY_AUDIO_ON)==='true'&&!audioStarted){
+      startBackgroundAudio();
+    }
+    document.removeEventListener('click',unlockAudio);
+    document.removeEventListener('touchstart',unlockAudio);
+  };
+  document.addEventListener('click',unlockAudio);
+  document.addEventListener('touchstart',unlockAudio);
+});
+
+document.addEventListener('visibilitychange',function(){
+  if(!document.hidden){
+    try{
+      if(localStorage.getItem(LS_KEY_HORROR)==='true'&&!document.body.classList.contains('horror-mode')){
+        checkHorrorState();
+      }
+      if(localStorage.getItem(LS_KEY_AUDIO_ON)==='true'&&!audioStarted){
+        startBackgroundAudio();
+      }
+    }catch(e){}
+  }
+});
+</script>
+</body>
+</html>
