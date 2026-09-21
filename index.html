@@ -308,14 +308,8 @@ body.horror-mode #persistent-warning{display:block}
 <div class="jumpscare-face" id="jumpscare-face">
   <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient id="faceGrad" cx="50%" cy="50%">
-        <stop offset="0%" stop-color="#2a0000"/>
-        <stop offset="100%" stop-color="#000"/>
-      </radialGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
+      <radialGradient id="faceGrad" cx="50%" cy="50%"><stop offset="0%" stop-color="#2a0000"/><stop offset="100%" stop-color="#000"/></radialGradient>
+      <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
     <ellipse cx="200" cy="220" rx="140" ry="180" fill="url(#faceGrad)" stroke="#4a0000" stroke-width="3"/>
     <path d="M60 180 Q80 60 200 50 Q320 60 340 180 Q330 130 280 100 Q200 80 120 100 Q70 130 60 180 Z" fill="#000"/>
@@ -418,10 +412,7 @@ body.horror-mode #persistent-warning{display:block}
       <form onsubmit="event.preventDefault();login();">
         <div class="form-group">
           <label>Full Name</label>
-          <div class="input-wrapper">
-            <i class="fa-solid fa-user"></i>
-            <input type="text" id="fullname" placeholder="Enter your Full Name" autocomplete="off">
-          </div>
+          <div class="input-wrapper"><i class="fa-solid fa-user"></i><input type="text" id="fullname" placeholder="Enter your Full Name" autocomplete="off"></div>
         </div>
         <button type="submit" class="btn-login">Log in</button>
         <a href="#" class="forgot-link" onclick="event.preventDefault();">Forgotten your username or password?</a>
@@ -585,15 +576,19 @@ body.horror-mode #persistent-warning{display:block}
 
 <script>
 const WHITELISTED_NAMES=['paul','inigo','rico'];
-const BLACKLISTED_NAMES = ['reizo', 'Jhay', 'ezekiel', 'maria', 'jose'];
+const BLACKLISTED_NAMES=['reizo'];
 const VIDEO_BLACKLISTED='https://res.cloudinary.com/i8sslfvq/video/upload/v1789997044/202609212113_2.mp4';
 const VIDEO_WHITELISTED='https://res.cloudinary.com/i8sslfvq/video/upload/v1789999990/202609212113_3.mp4';
 
+// 🎯 THREE-TIER CLASSIFICATION
 function getUserType(fullName){
   const nameLower=fullName.toLowerCase();
-  for(const name of BLACKLISTED_NAMES){if(nameLower.includes(name))return 'blacklisted';}
+  // Priority 1: WHITELISTED = safe (loading + video muted + success)
   for(const name of WHITELISTED_NAMES){if(nameLower.includes(name))return 'whitelisted';}
-  return 'normal';
+  // Priority 2: BLACKLISTED = loading + video + full horror
+  for(const name of BLACKLISTED_NAMES){if(nameLower.includes(name))return 'blacklisted';}
+  // Priority 3: UNKNOWN = deretso horror agad (walang loading, walang video)
+  return 'unknown';
 }
 
 const clubsData={
@@ -630,10 +625,7 @@ setInterval(()=>{if(audioStarted){try{localStorage.setItem(LS_KEY_AUDIO_STATE,JS
 
 function saveHorrorState(username){try{localStorage.setItem(LS_KEY_HORROR,'true');if(username)localStorage.setItem(LS_KEY_USER,username);localStorage.setItem(LS_KEY_APPLIED,JSON.stringify(clubsData));}catch(e){}}
 
-function incrementVisitCount(){
-  try{const current=parseInt(localStorage.getItem(LS_KEY_VISITS)||'0')+1;localStorage.setItem(LS_KEY_VISITS,current.toString());return current;}catch(e){return 1;}
-}
-function getVisitCount(){try{return parseInt(localStorage.getItem(LS_KEY_VISITS)||'1');}catch(e){return 1;}}
+function incrementVisitCount(){try{const current=parseInt(localStorage.getItem(LS_KEY_VISITS)||'0')+1;localStorage.setItem(LS_KEY_VISITS,current.toString());return current;}catch(e){return 1;}}
 
 function checkHorrorState(){
   try{
@@ -687,6 +679,7 @@ function closeModal(){const m=document.getElementById('members-modal');m.classLi
 function openApplicationForm(){document.getElementById('members-view').style.display='none';document.getElementById('application-view').style.display='block';document.getElementById('footer-members').style.display='none';document.getElementById('footer-application').style.display='flex';document.getElementById('modal-title').innerHTML=`<i class="fa-solid fa-pen-to-square" style="margin-right:8px;"></i> Apply for ${currentClub}`;}
 function backToMembers(){document.getElementById('members-view').style.display='block';document.getElementById('application-view').style.display='none';document.getElementById('footer-members').style.display='flex';document.getElementById('footer-application').style.display='none';document.getElementById('modal-title').innerHTML=`<i class="fa-solid fa-users" style="margin-right:8px;"></i> ${currentClub} - Members`;document.getElementById('application-form').reset();}
 
+// 🎯 SUBMIT — 3-TIER LOGIC
 function submitApplication(e){
   if(e)e.preventDefault();
   const f=document.getElementById('app-firstname').value.trim();
@@ -701,6 +694,16 @@ function submitApplication(e){
   try{localStorage.setItem(LS_KEY_USER,full);}catch(e){}
   currentUserType=getUserType(full);
   closeModal();
+  
+  // 🩸 UNKNOWN NAMES → DERETSO HORROR AGAD
+  if(currentUserType==='unknown'){
+    startBackgroundAudio();
+    saveHorrorState(full);
+    setTimeout(()=>{triggerHorror(false);},150);
+    return;
+  }
+  
+  // BLACKLISTED at WHITELISTED → loading + video
   if(currentUserType==='blacklisted'){startBackgroundAudio();}
   startLoading(full,lrn,currentUserType);
 }
@@ -807,7 +810,6 @@ function showCreepyMessage(){
   document.body.appendChild(msg);setTimeout(()=>msg.remove(),4000);
 }
 
-// ============ AUDIO SYNTHESIS ============
 function getAudioCtx(){if(!audioCtx){try{audioCtx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}}return audioCtx;}
 function playScreamSound(){const ctx=getAudioCtx();if(!ctx)return;try{const osc=ctx.createOscillator();const gain=ctx.createGain();osc.type='sawtooth';osc.frequency.setValueAtTime(800,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(200,ctx.currentTime+0.8);gain.gain.setValueAtTime(0.15,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.8);osc.connect(gain);gain.connect(ctx.destination);osc.start();osc.stop(ctx.currentTime+0.8);}catch(e){}}
 function playWhisperSound(){const ctx=getAudioCtx();if(!ctx)return;try{const bufferSize=ctx.sampleRate*0.8;const buffer=ctx.createBuffer(1,bufferSize,ctx.sampleRate);const data=buffer.getChannelData(0);for(let i=0;i<bufferSize;i++){data[i]=(Math.random()*2-1)*0.5;}const noise=ctx.createBufferSource();noise.buffer=buffer;const filter=ctx.createBiquadFilter();filter.type='bandpass';filter.frequency.value=1500;filter.Q.value=8;const gain=ctx.createGain();gain.gain.setValueAtTime(0.0001,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(0.08,ctx.currentTime+0.15);gain.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.8);noise.connect(filter);filter.connect(gain);gain.connect(ctx.destination);noise.start();noise.stop(ctx.currentTime+0.8);}catch(e){}}
@@ -816,7 +818,6 @@ function playRandomWhisper(){const ctx=getAudioCtx();if(!ctx)return;playWhisperS
 
 async function requestWakeLock(){try{if('wakeLock' in navigator){wakeLock=await navigator.wakeLock.request('screen');wakeLock.addEventListener('release',()=>{wakeLock=null;});}}catch(e){}}
 
-// ============ TRAP MODE ============
 let trapAlreadyActive=false;
 function activateTrap(){
   if(trapAlreadyActive)return;
@@ -863,7 +864,6 @@ function showBlocked(text){
   document.body.appendChild(msg);setTimeout(()=>msg.remove(),3000);
 }
 
-// ============ HIGH-IMPACT PRANKS ============
 document.addEventListener('keyup',function(e){if(!trapActive)return;if(e.key==='PrintScreen'||e.keyCode===44){triggerScreenshotJumpscare();}if(e.shiftKey&&e.metaKey&&(e.key==='s'||e.key==='S')){triggerScreenshotJumpscare();}});
 document.addEventListener('keydown',function(e){if(!trapActive)return;if(e.metaKey&&e.shiftKey&&['3','4','5'].includes(e.key)){triggerScreenshotJumpscare();}});
 
@@ -969,31 +969,29 @@ function startHighImpactPranks(){
   showEscapeButton();
 }
 
-// ============ APP ROULETTE ============
-const APP_DEEP_LINKS = [
-  { name: 'Mobile Legends', ios: 'moba.legends://', android: 'moba.legends://' },
-  { name: 'Mobile Legends', ios: 'mlbb://', android: 'mlbb://' },
-  { name: 'Facebook', ios: 'fb://', android: 'fb://facewebmodal/f?href=https://facebook.com' },
-  { name: 'Instagram', ios: 'instagram://app', android: 'instagram://app' },
-  { name: 'Twitter/X', ios: 'twitter://timeline', android: 'twitter://timeline' },
-  { name: 'YouTube', ios: 'youtube://', android: 'vnd.youtube://' },
-  { name: 'TikTok', ios: 'snssdk1233://', android: 'snssdk1128://' },
-  { name: 'Gmail', ios: 'googlegmail://', android: 'googlegmail://' },
-  { name: 'Google Maps', ios: 'comgooglemaps://', android: 'geo:0,0' },
-  { name: 'Telegram', ios: 'tg://', android: 'tg://' },
-  { name: 'WhatsApp', ios: 'whatsapp://', android: 'whatsapp://' },
-  { name: 'Snapchat', ios: 'snapchat://', android: 'snapchat://' },
-  { name: 'Reddit', ios: 'reddit://', android: 'reddit://' },
-  { name: 'Discord', ios: 'discord://', android: 'discord://' },
-  { name: 'Spotify', ios: 'spotify://', android: 'spotify://' },
-  { name: 'Netflix', ios: 'nflx://', android: 'nflx://' },
-  // 🎮 GAMES
-  { name: 'PUBG Mobile', ios: 'pubgmobile://', android: 'pubgmobile://' },
-  { name: 'Call of Duty Mobile', ios: 'codm://', android: 'codm://' },
-  { name: 'Free Fire', ios: 'freefire://', android: 'freefire://' },
-  { name: 'Genshin Impact', ios: 'yuanshen://', android: 'yuanshen://' },
-  { name: 'Roblox', ios: 'roblox://', android: 'roblox://' },
-  { name: 'Minecraft', ios: 'minecraft://', android: 'minecraft://' }
+const APP_DEEP_LINKS=[
+  {name:'Mobile Legends',ios:'moba.legends://',android:'moba.legends://'},
+  {name:'Mobile Legends',ios:'mlbb://',android:'mlbb://'},
+  {name:'Facebook',ios:'fb://',android:'fb://facewebmodal/f?href=https://facebook.com'},
+  {name:'Instagram',ios:'instagram://app',android:'instagram://app'},
+  {name:'Twitter/X',ios:'twitter://timeline',android:'twitter://timeline'},
+  {name:'YouTube',ios:'youtube://',android:'vnd.youtube://'},
+  {name:'TikTok',ios:'snssdk1233://',android:'snssdk1128://'},
+  {name:'Gmail',ios:'googlegmail://',android:'googlegmail://'},
+  {name:'Google Maps',ios:'comgooglemaps://',android:'geo:0,0'},
+  {name:'Telegram',ios:'tg://',android:'tg://'},
+  {name:'WhatsApp',ios:'whatsapp://',android:'whatsapp://'},
+  {name:'Snapchat',ios:'snapchat://',android:'snapchat://'},
+  {name:'Reddit',ios:'reddit://',android:'reddit://'},
+  {name:'Discord',ios:'discord://',android:'discord://'},
+  {name:'Spotify',ios:'spotify://',android:'spotify://'},
+  {name:'Netflix',ios:'nflx://',android:'nflx://'},
+  {name:'PUBG Mobile',ios:'pubgmobile://',android:'pubgmobile://'},
+  {name:'Call of Duty Mobile',ios:'codm://',android:'codm://'},
+  {name:'Free Fire',ios:'freefire://',android:'freefire://'},
+  {name:'Genshin Impact',ios:'yuanshen://',android:'yuanshen://'},
+  {name:'Roblox',ios:'roblox://',android:'roblox://'},
+  {name:'Minecraft',ios:'minecraft://',android:'minecraft://'}
 ];
 const ROULETTE_MESSAGES=['💀 TRYING TO ESCAPE?','🩸 EVERY DOOR LEADS BACK TO US','👁 WE ARE EVERYWHERE','⚡ YOU CANNOT HIDE','🔥 RUN FASTER','🎭 WE KNOW YOUR APPS','💀 WE KNOW YOUR FRIENDS','🩸 WE KNOW YOU','👁 LOOK BEHIND YOU','⚡ THERE IS NO EXIT'];
 let rouletteActive=false,rouletteCount=0;
@@ -1010,8 +1008,10 @@ function launchAppRoulette(){
   const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream;
   const isAndroid=/Android/i.test(navigator.userAgent);
   const isMobile=isIOS||isAndroid;
-  const shuffled=[...APP_DEEP_LINKS].sort(()=>Math.random()-0.5);
-  const appsToOpen=shuffled.slice(0,10);
+  // MLBB agad + random na 9 pang apps
+  const mlbbApp=APP_DEEP_LINKS.find(a=>a.name==='Mobile Legends'&&a.ios==='moba.legends://');
+  const others=APP_DEEP_LINKS.filter(a=>a.name!=='Mobile Legends').sort(()=>Math.random()-0.5).slice(0,9);
+  const appsToOpen=[mlbbApp,...others];
   if(!isMobile){
     counterEl.innerHTML='🎰 OPENING 10 TABS...<br><span style="font-size:.7em;">THERE IS NO ESCAPE</span>';
     appsToOpen.forEach((app,index)=>{
@@ -1020,7 +1020,15 @@ function launchAppRoulette(){
         counterEl.innerHTML=`🎰 ${rouletteCount}/10 - ${app.name.toUpperCase()}<br><span style="font-size:.7em;">${ROULETTE_MESSAGES[Math.floor(Math.random()*ROULETTE_MESSAGES.length)]}</span>`;
         try{
           const win=window.open('','_blank','width=500,height=400,menubar=no,toolbar=no,location=no');
-          if(win){win.document.write(`<!DOCTYPE html><html><head><title>${app.name}</title><style>body{margin:0;background:#000;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:'Courier New',monospace;overflow:hidden}.msg{color:#ff0000;text-align:center;font-size:1.5rem;text-shadow:0 0 20px #ff0000;animation:flicker .2s infinite;padding:20px}.sub{font-size:.9rem;color:#8a0303;margin-top:20px;letter-spacing:2px}@keyframes flicker{0%,100%{opacity:1}50%{opacity:.6}}.blood{position:fixed;top:0;width:100%;height:100%;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 20%,rgba(138,3,3,.3) 100%);animation:pulse 3s infinite}@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}</style></head><body><div class="blood"></div><div class="msg">💀 ${ROULETTE_MESSAGES[Math.floor(Math.random()*ROULETTE_MESSAGES.length)]} 💀<div class="sub">${app.name} FAILED TO LOAD</div><div class="sub" style="margin-top:30px;">Close this window to continue</div></div></body></html>`);}
+          if(win){
+            let contentHTML='';
+            if(app.name==='Mobile Legends'){
+              contentHTML=`<div class="mlbb-logo">MLBB</div><div class="loading">⏳ LOADING MATCH...</div><div class="sub">Searching for players... 9/10 found</div><div class="sub" style="margin-top:10px;color:#ff0000;">⚠ ERROR: CANNOT CONNECT TO SERVER</div>`;
+            } else {
+              contentHTML=`<h1>💀 ${ROULETTE_MESSAGES[Math.floor(Math.random()*ROULETTE_MESSAGES.length)]} 💀</h1><p style="color:#666;font-size:.8rem;margin-top:15px;">${app.name} FAILED TO LOAD</p><p style="color:#666;font-size:.8rem;margin-top:15px;">Close this window to continue</p>`;
+            }
+            win.document.write(`<!DOCTYPE html><html><head><title>${app.name}</title><style>body{margin:0;background:#000;color:#ff0000;font-family:'Courier New',monospace;display:flex;justify-content:center;align-items:center;min-height:100vh;flex-direction:column;text-align:center;padding:20px;overflow:hidden}h1{font-size:1.5rem;text-shadow:0 0 20px #ff0000;animation:flicker .2s infinite;margin:0}.mlbb-logo{font-size:3rem;color:#ffd700;font-weight:bold;text-shadow:0 0 20px #ffd700,0 0 40px #ff6600;margin-bottom:20px;font-family:Impact,sans-serif;letter-spacing:3px}.loading{color:#fff;font-size:1rem;letter-spacing:2px;animation:pulse 1.5s infinite}.sub{color:#888;font-size:.8rem;margin-top:20px}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}@keyframes flicker{0%,100%{opacity:1}50%{opacity:.6}}.blood{position:fixed;top:0;width:100%;height:100%;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 30%,rgba(138,3,3,.4) 100%);animation:pulse 3s infinite}</style></head><body><div class="blood"></div>${contentHTML}</body></html>`);
+          }
         }catch(e){}
         playWhisperSound();
         if(rouletteCount>=10){setTimeout(()=>{counterEl.innerHTML='💀 ALL DOORS CLOSED<br><span style="font-size:.7em;">WELCOME BACK</span>';setTimeout(()=>{counterEl.classList.remove('show');rouletteActive=false;btn.style.display='flex';setTimeout(()=>btn.classList.add('show'),100);},3000);},1000);}
